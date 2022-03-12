@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAdvertisementRequest;
 use App\Http\Requests\UpdateAdvertisementRequest;
 use App\Models\Advertisement;
-use App\Models\Image;
-use PhpParser\Node\Stmt\TryCatch;
+use App\Services\AdCampaign\AdCampaignFilesService;
+use App\Services\AdCampaign\AdCampaignService;
+use App\Services\AdCampaign\FileUploadService;
 
 class AdvertisementController extends Controller
 {
+
+    public function __construct(public AdCampaignService $adCampaignService, public FileUploadService $fileUploadService, public AdCampaignFilesService $adCampaignFilesService)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,11 +23,7 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-
-        $data = Advertisement::with('images')->paginate(20);
-        return [
-            "data" => $data,
-        ];
+        return $this->adCampaignService->list();
     }
 
     /**
@@ -32,33 +34,16 @@ class AdvertisementController extends Controller
      */
     public function store(StoreAdvertisementRequest $request)
     {
+        $advertisement = $this->adCampaignService->create($request->validated());
 
-        try {
-            $advertisement = Advertisement::create($request->validated());
-            $imagesData = [];
-            if ($request->hasFile('images')) {
+        if ($request->hasFile('images')) {
+            $files = $this->fileUploadService->uploadFiles($request->file('images'), $advertisement, "local");
 
-                foreach ($request->file('images') as $key => $file) {
-                    $name = md5($request->name . $request->from . $request->to . $request->daily_budget . $key) . '.' . $file->getClientOriginalExtension();
-                    $file->move(public_path('/uploads/files/'), $name);
-                    $imagesData[] = $name;
-
-                    $image = new Image();
-                    $image->url = $name;
-                    $image->advertisement_id = $advertisement->id;
-                    $image->save();
-                }
-            }
-
-            return [
-                "data" => $advertisement,
-            ];
-        } catch (\Exception $e) {
-            return [
-                "status" => $e->getCode(),
-                "error" => $e->getMessage()
-            ];
+            $this->adCampaignFilesService->saveMany($files, $advertisement->id);
         }
+        return [
+            "data" => $advertisement,
+        ];
     }
 
 
@@ -71,6 +56,16 @@ class AdvertisementController extends Controller
      */
     public function update(UpdateAdvertisementRequest $request, Advertisement $advertisement)
     {
-        //
+
+        $updatedAdvertisement =  $this->adCampaignService->update($request->validated(), $advertisement);
+
+        if ($request->hasFile('images')) {
+            $files = $this->fileUploadService->uploadFiles($request->file('images'), $updatedAdvertisement, "local");
+            $this->adCampaignFilesService->saveMany($files, $updatedAdvertisement->id);
+        }
+
+        return [
+            "data" => $updatedAdvertisement,
+        ];
     }
 }

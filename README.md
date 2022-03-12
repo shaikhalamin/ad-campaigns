@@ -1,9 +1,9 @@
 # Ad Campaign build with Laravel and React
     ```php
         #Basic Feature
-        
-        1. User can create and edit ad-campaign with  name, date, daily budget, total budget and images
-        3. User can see the list and preview the campaign images from the list
+
+        1. User can create and edit ad-campaign with  name, date, daily budget, total budget and images.
+        3. User can see the list and preview the campaign images from the list.
     ```
 ## Project Run Instruction
 

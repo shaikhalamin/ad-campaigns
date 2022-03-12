@@ -20,8 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::controller(AdvertisementController::class)->group(function () {
-    Route::get('/advertisements', 'index');
-    Route::post('/advertisements', 'store');
-    Route::put('/advertisements/{id}', 'update');
-});
+Route::apiResource('advertisements', AdvertisementController::class)->except(['show', 'destroy']);
