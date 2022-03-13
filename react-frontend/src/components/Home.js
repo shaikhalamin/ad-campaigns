@@ -17,7 +17,7 @@ function Home() {
   return (
     <>
       <Layout>
-        {/* <List items={campaigns.data} /> */}
+        <List items={campaigns.data} />
       </Layout>
     </>
   );

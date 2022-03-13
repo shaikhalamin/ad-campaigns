@@ -7,7 +7,6 @@ function List({ items }) {
       <Table responsive>
         <thead>
           <tr>
-            <th>#</th>
             <th>Name</th>
             <th>From Date ~ To Date</th>
             <th>Daily budget</th>
@@ -16,17 +15,16 @@ function List({ items }) {
           </tr>
         </thead>
         <tbody>
-          {items &&
-            items.map((campaign) => (
-              <tr key={campaign.id}>
-                <td>{campaign.name}</td>
-                <td>
-                  {campaign.from} ~ {campaign.to}
-                </td>
-                <td>{campaign.daily_budget}</td>
-                <td>{campaign.total_budget} </td>
-              </tr>
-            ))}
+          {items && items.map((campaign) => (
+            <tr key={campaign.id}>
+              <td>{campaign.name}</td>
+              <td>
+                {campaign.from} ~ {campaign.to}
+              </td>
+              <td>{campaign.daily_budget}</td>
+              <td>{campaign.total_budget} </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>
