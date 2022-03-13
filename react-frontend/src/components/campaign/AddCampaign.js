@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -21,6 +21,8 @@ const campaignSchema = yup
   .required();
 
 function AddCampaign() {
+  let navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -35,11 +37,9 @@ function AddCampaign() {
     const payload = prepareFormData(data);
     saveCampaign(payload)
       .then((res) => {
-        console.log(res);
-        reset();
+        navigate(`/`);
       })
       .catch((err) => {
-        //alert(err.message);
         console.log(err);
       });
   };
@@ -50,7 +50,7 @@ function AddCampaign() {
         <Row className="mt-5 mb-5 border">
           <Col lg={12}>
             <Link
-              to="/create"
+              to="/"
               className="text-dark btn btn-outline-info text-dark mb-5"
             >
               Back to List

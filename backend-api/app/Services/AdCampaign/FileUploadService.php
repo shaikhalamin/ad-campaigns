@@ -15,7 +15,7 @@ class FileUploadService
         $fileUploadFactory = FileUploadFactory::create($uploadDriver);
 
         foreach ($files as $key => $file) {
-            $name = md5($advertisement->name . $advertisement->from . $advertisement->to . $advertisement->daily_budget . time()) . '.' . $file->getClientOriginalExtension();
+            $name = md5($advertisement->name . $advertisement->from . $advertisement->to . $advertisement->daily_budget . $key) . '.' . $file->getClientOriginalExtension();
             $fileUploadFactory->upload($file, $name);
             $fileNames[] = $name;
         }

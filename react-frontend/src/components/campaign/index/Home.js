@@ -25,7 +25,7 @@ function Home() {
 
             <Link
               to="/create"
-              className="text-dark btn btn-outline-info text-dark mb-5"
+              className="text-dark btn btn-info text-dark mb-5"
             >
               Create Campaign
             </Link>

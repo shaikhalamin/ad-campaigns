@@ -1,14 +1,16 @@
 import axios from "axios";
 import _ from "lodash";
 
-const URL = "http://localhost:9047/api/advertisements";
+export const BASEURL = "http://localhost:9047";
+
+const API_URL = `${BASEURL}/api/advertisements`;
 
 export const getCampaignList = async () => {
-  return axios.get(URL);
+  return axios.get(API_URL);
 };
 
 export const saveCampaign = async (formData) => {
-  return axios.post(URL, formData, {
+  return axios.post(API_URL, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -16,7 +18,7 @@ export const saveCampaign = async (formData) => {
 };
 
 export const updateCampaign = async (formData) => {
-  return axios.post(URL, formData, {
+  return axios.post(API_URL, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -25,7 +27,7 @@ export const updateCampaign = async (formData) => {
 
 export const prepareFormData = (campaign) => {
   const { files, name, from, to, daily_budget, total_budget } = campaign;
-  
+
   let formData = new FormData();
   formData.append("name", name);
   formData.append("from", new Date(from).toISOString().split("T")[0]);

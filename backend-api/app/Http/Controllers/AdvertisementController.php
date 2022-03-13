@@ -27,6 +27,17 @@ class AdvertisementController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Advertisement  $advertisement
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Advertisement $advertisement)
+    {
+        return $this->adCampaignService->show($advertisement);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreAdvertisementRequest  $request

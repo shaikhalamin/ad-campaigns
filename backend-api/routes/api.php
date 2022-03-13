@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('advertisements', AdvertisementController::class)->except(['show', 'destroy']);
+Route::apiResource('advertisements', AdvertisementController::class)->except(['show']);

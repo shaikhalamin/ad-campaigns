@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Row, Col, Button, Modal, Card } from "react-bootstrap";
+import { BASEURL } from "../../../helpers/api.helpers";
 
 function CampaignPreview({ images }) {
   const [modalShow, setModalShow] = React.useState(false);
@@ -21,7 +22,26 @@ function CampaignPreview({ images }) {
             Creative Preview
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>{JSON.stringify(images, null, 2)}</Modal.Body>
+        <Modal.Body>
+          <Row className="mt-2">
+            {images &&
+              images.map((item) => {
+                return (
+                  <Col md={6} key={item.id}>
+                    <Card>
+                      <Card.Body>
+                        <img
+                          src={`${BASEURL}/uploads/files/${item.url}`}
+                          alt={`new_cat`}
+                          className="img-fluid"
+                        />
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                );
+              })}
+          </Row>
+        </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => closeModal()}>Close</Button>
         </Modal.Footer>

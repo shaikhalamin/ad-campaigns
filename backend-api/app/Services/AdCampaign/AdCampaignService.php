@@ -18,6 +18,11 @@ class AdCampaignService
         return Advertisement::create($data);
     }
 
+    public function show(Advertisement $advertisement): Advertisement
+    {
+        return $advertisement->load('images');
+    }
+
 
     public function update(array $data, Advertisement $advertisement): Advertisement
     {
