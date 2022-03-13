@@ -7,7 +7,7 @@ function Layout({ children }) {
     <>
       <Header />
       <Container fluid>
-        <Row>
+        <Row className="mt-2">
           <Col md={{ span: 8, offset: 2 }}>{children}</Col>
         </Row>
       </Container>

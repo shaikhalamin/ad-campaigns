@@ -7,7 +7,7 @@ export default function Header() {
       <>
         <Navbar bg="dark" variant="info">
           <Navbar.Brand
-            href="#home"
+            href="/"
             className="text-white"
             style={{ marginLeft: "20px" }}
           >
