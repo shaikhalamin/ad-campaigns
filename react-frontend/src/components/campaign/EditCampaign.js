@@ -161,12 +161,14 @@ function EditCampaign() {
                           <ListGroup horizontal>
                             {uploadedImages.map((image, index) => (
                               <ListGroup.Item key={index}>
-                                <img
-                                  src={`${BASEURL}/uploads/files/${image.url}`}
-                                  alt={`${image.url}`}
-                                  width="200"
-                                  height="200"
-                                />
+                                {image && (
+                                  <img
+                                    src={`${BASEURL}/uploads/files/${image.url}`}
+                                    alt={`${image.url}`}
+                                    width="200"
+                                    height="200"
+                                  />
+                                )}
                               </ListGroup.Item>
                             ))}
                           </ListGroup>
