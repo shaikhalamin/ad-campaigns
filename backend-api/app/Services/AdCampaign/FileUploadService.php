@@ -7,7 +7,6 @@ use App\Services\Factories\FileUploadFactory;
 
 class FileUploadService
 {
-
     public function uploadFiles(array $files, Advertisement $advertisement, string $uploadDriver): array
     {
         $fileNames = [];

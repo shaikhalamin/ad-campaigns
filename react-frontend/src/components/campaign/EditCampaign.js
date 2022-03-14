@@ -164,7 +164,8 @@ function EditCampaign() {
                                 <img
                                   src={`${BASEURL}/uploads/files/${image.url}`}
                                   alt={`${image.url}`}
-                                  className="img-fluid"
+                                  width="200"
+                                  height="200"
                                 />
                               </ListGroup.Item>
                             ))}

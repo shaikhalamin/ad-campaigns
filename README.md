@@ -15,7 +15,7 @@ Step 2: cd ad-campaigns
 
 Step 3: sudo chmod +x api_run.sh
 
-Step 4: ./api_run.sh
+Step 4: ./run.sh
 
 Step 5: docker exec -it backend-container php artisan migrate:fresh
 

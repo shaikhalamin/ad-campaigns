@@ -18,9 +18,9 @@ echo "Config clearing ..."
 docker exec -it backend-container php artisan config:clear
 
 echo "PHP CS sniffing ...."
-# docker exec -it backend-container composer sniff
-# echo "PHP CS linting ..."
-# docker exec -it backend-container composer lint
+docker exec -it backend-container composer sniff
+echo "PHP CS linting ..."
+docker exec -it backend-container composer lint
 
 # echo "Running unit test ...."
 # docker exec -it backend-container ./vendor/bin/phpunit tests/Unit

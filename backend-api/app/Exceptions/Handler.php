@@ -39,8 +39,6 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->renderable(function (Throwable $e, $request) {
-
-
             if ($e instanceof NotFoundHttpException) {
                 $message = 'Resource not found!';
 

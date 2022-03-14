@@ -9,7 +9,6 @@ class AdCampaignService
 {
     public function list(): Paginator
     {
-
         return Advertisement::with('images')->paginate(20);
     }
 
@@ -23,10 +22,10 @@ class AdCampaignService
         return $advertisement->load('images');
     }
 
-
     public function update(array $data, Advertisement $advertisement): Advertisement
     {
         $advertisement->update($data);
+
         return $advertisement;
     }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button, Modal, Card } from "react-bootstrap";
+import { Row, Col, Button, Modal, Card, ListGroup } from "react-bootstrap";
 import { BASEURL } from "../../../helpers/api.helpers";
 
 function CampaignPreview({ images }) {
@@ -13,7 +13,7 @@ function CampaignPreview({ images }) {
       <Modal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        size="lg"
+        size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -29,7 +29,7 @@ function CampaignPreview({ images }) {
                 return (
                   <Col md={6} key={item.id}>
                     <Card>
-                      <Card.Body>
+                      <Card.Body className="d-flex justify-content-center">
                         <img
                           src={`${BASEURL}/uploads/files/${item.url}`}
                           alt={`new_cat`}

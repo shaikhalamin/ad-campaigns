@@ -11,7 +11,6 @@ use App\Services\AdCampaign\FileUploadService;
 
 class AdvertisementController extends Controller
 {
-
     public function __construct(public AdCampaignService $adCampaignService, public FileUploadService $fileUploadService, public AdCampaignFilesService $adCampaignFilesService)
     {
     }
@@ -48,15 +47,15 @@ class AdvertisementController extends Controller
         $advertisement = $this->adCampaignService->create($request->validated());
 
         if ($request->hasFile('images')) {
-            $files = $this->fileUploadService->uploadFiles($request->file('images'), $advertisement, "local");
+            $files = $this->fileUploadService->uploadFiles($request->file('images'), $advertisement, 'local');
 
             $this->adCampaignFilesService->saveMany($files, $advertisement->id);
         }
+
         return [
-            "data" => $advertisement,
+            'data' => $advertisement,
         ];
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -67,16 +66,15 @@ class AdvertisementController extends Controller
      */
     public function update(UpdateAdvertisementRequest $request, Advertisement $advertisement)
     {
-
-        $updatedAdvertisement =  $this->adCampaignService->update($request->validated(), $advertisement);
+        $updatedAdvertisement = $this->adCampaignService->update($request->validated(), $advertisement);
 
         if ($request->hasFile('images')) {
-            $files = $this->fileUploadService->uploadFiles($request->file('images'), $updatedAdvertisement, "local");
+            $files = $this->fileUploadService->uploadFiles($request->file('images'), $updatedAdvertisement, 'local');
             $this->adCampaignFilesService->saveMany($files, $updatedAdvertisement->id);
         }
 
         return [
-            "data" => $updatedAdvertisement,
+            'data' => $updatedAdvertisement,
         ];
     }
 }
