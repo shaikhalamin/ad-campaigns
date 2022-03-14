@@ -22,7 +22,11 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        return $this->adCampaignService->list();
+        $response = [
+            'data' => $this->adCampaignService->list()
+        ];
+
+        return response()->json($response, 200);
     }
 
     /**
@@ -33,7 +37,11 @@ class AdvertisementController extends Controller
      */
     public function show(Advertisement $advertisement)
     {
-        return $this->adCampaignService->show($advertisement);
+        $response = [
+            'data' => $this->adCampaignService->show($advertisement)
+        ];
+
+        return response()->json($response, 200);
     }
 
     /**
@@ -52,9 +60,11 @@ class AdvertisementController extends Controller
             $this->adCampaignFilesService->saveMany($files, $advertisement->id);
         }
 
-        return [
-            'data' => $advertisement,
+        $response = [
+            'data' => $this->adCampaignService->show($advertisement)
         ];
+
+        return response()->json($response, 200);
     }
 
     /**
@@ -73,8 +83,10 @@ class AdvertisementController extends Controller
             $this->adCampaignFilesService->saveMany($files, $updatedAdvertisement->id);
         }
 
-        return [
-            'data' => $updatedAdvertisement,
+        $response = [
+            'data' => $this->adCampaignService->show($updatedAdvertisement)
         ];
+
+        return response()->json($response, 200);
     }
 }

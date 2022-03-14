@@ -9,7 +9,7 @@ class AdCampaignService
 {
     public function list(): Paginator
     {
-        return Advertisement::with('images')->paginate(20);
+        return Advertisement::orderBy("updated_at", "desc")->with('images')->paginate(20);
     }
 
     public function create(array $data): Advertisement

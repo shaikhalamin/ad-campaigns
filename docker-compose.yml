@@ -2,6 +2,7 @@ version: "3"
 
 networks:
   ad-network:
+    driver: bridge
 
 services:
   backend-service:

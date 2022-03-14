@@ -43,7 +43,7 @@ function EditCampaign() {
   useEffect(() => {
     if (id) {
       getCampaign(id).then((res) => {
-        const { images, name, from, to, daily_budget, total_budget } = res.data;
+        const { images, name, from, to, daily_budget, total_budget } = res?.data?.data;
         setValue("name", name);
         setValue("from", from);
         setValue("to", to);

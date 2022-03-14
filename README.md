@@ -13,7 +13,7 @@ Step 1: git clone https://github.com/shaikhalamin/ad-campaigns.git
 
 Step 2: cd ad-campaigns
 
-Step 3: sudo chmod +x api_run.sh
+Step 3: sudo chmod +x run.sh
 
 Step 4: ./run.sh
 

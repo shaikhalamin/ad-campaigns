@@ -11,8 +11,7 @@ function Home() {
 
   useEffect(() => {
     getCampaignList().then((result) => {
-      setCampaigns(result.data);
-      console.log(result.data);
+      setCampaigns(result?.data?.data);
     });
   }, []);
 

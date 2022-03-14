@@ -14,9 +14,7 @@ const campaignSchema = yup
     to: yup.date(" To must be date type").required("To date is required"),
     daily_budget: yup.number().positive().required(),
     total_budget: yup.number().positive().required(),
-    files: yup
-      .mixed()
-      .test("required", "Files required", (value) => value.length > 0),
+    files: yup.mixed().notRequired(),
   })
   .required();
 
