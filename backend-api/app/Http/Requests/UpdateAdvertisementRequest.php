@@ -29,7 +29,7 @@ class UpdateAdvertisementRequest extends FormRequest
             'to' => 'sometimes|required|date',
             'total_budget' => 'sometimes|required|numeric',
             'daily_budget' => 'sometimes|required|numeric',
-            'images.*' => 'sometimes|required',
+            'images.*' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 }

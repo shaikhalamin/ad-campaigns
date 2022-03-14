@@ -40,14 +40,14 @@ function AddCampaign() {
         navigate(`/`);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err?.response?.data?.message);
       });
   };
 
   return (
     <>
       <Layout>
-        <Row className="mt-5 mb-5 border">
+        <Row className="mt-2 mb-5 border">
           <Col lg={12}>
             <Link
               to="/"
@@ -55,7 +55,7 @@ function AddCampaign() {
             >
               Back to List
             </Link>
-            <h4 className="text-center mb-3 mt-5">Create Advertise Campaign</h4>
+            <h4 className="text-center mb-3 mt-2">Create Advertise Campaign</h4>
 
             <Row>
               <Col md={{ span: 8, offset: 2 }} className="mb-5">

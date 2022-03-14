@@ -22,9 +22,6 @@ echo "PHP CS sniffing ...."
 # echo "PHP CS linting ..."
 # docker exec -it backend-container composer lint
 
-# echo "Testing api call ..."
-# curl -d "number_one=9&number_two=14&operator=addition" -X POST http://localhost:9047/api/v1/compute -H "Accept: application/json"
-
 # echo "Running unit test ...."
 # docker exec -it backend-container ./vendor/bin/phpunit tests/Unit
 # echo "Running feature test ...."

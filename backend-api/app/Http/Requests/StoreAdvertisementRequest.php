@@ -30,6 +30,7 @@ class StoreAdvertisementRequest extends FormRequest
             'total_budget' => 'required|numeric',
             'daily_budget' => 'required|numeric',
             'images' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 }
