@@ -24,8 +24,3 @@ echo "PHP CS sniffing ...."
 docker exec -it backend-container composer sniff
 echo "PHP CS linting ..."
 docker exec -it backend-container composer lint
-
-# echo "Running unit test ...."
-# docker exec -it backend-container ./vendor/bin/phpunit tests/Unit
-# echo "Running feature test ...."
-# docker exec -it backend-container ./vendor/bin/phpunit tests/Feature/EmojiCalculatorTest.php
