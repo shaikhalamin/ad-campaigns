@@ -2,7 +2,9 @@ FROM php:8.0-fpm
 
 WORKDIR /var/www/html
 
-RUN apt-get update && apt-get install -y zlib1g-dev libicu-dev libzip-dev zip unzip
+RUN apt-get update && apt-get install -y zlib1g-dev libicu-dev libzip-dev zip unzip libpng-dev
+
+RUN docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install intl opcache pdo pdo_mysql
 

@@ -17,7 +17,11 @@ class AdvertisementFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'from' => $this->faker->date,
+            'to' => $this->faker->date,
+            'total_budget' => $this->faker->randomNumber(),
+            'daily_budget' => $this->faker->randomNumber(),
         ];
     }
 }

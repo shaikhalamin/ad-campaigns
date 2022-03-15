@@ -21,13 +21,15 @@ Step 5: docker exec -it backend-container php artisan migrate:fresh
 
 ```
 
-## React Frontend will be running on http://localhost:3007/
+## React Frontend will be running on http://localhost:3007/ 
 
 ```javascript
 
-Please open http://localhost:3007/ to see the result
+To Open the frontend link please click the link http://localhost:3007/ to see the result
 
 ```
+# To Run Test
 
+docker exec -it backend-container php artisan test --filter AdvertisementTest
 
 ```

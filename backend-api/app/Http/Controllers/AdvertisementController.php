@@ -23,7 +23,8 @@ class AdvertisementController extends Controller
     public function index()
     {
         $response = [
-            'data' => $this->adCampaignService->list()
+            'success' => true,
+            'data' => $this->adCampaignService->list(),
         ];
 
         return response()->json($response, 200);
@@ -38,7 +39,8 @@ class AdvertisementController extends Controller
     public function show(Advertisement $advertisement)
     {
         $response = [
-            'data' => $this->adCampaignService->show($advertisement)
+            'success' => true,
+            'data' => $this->adCampaignService->show($advertisement),
         ];
 
         return response()->json($response, 200);
@@ -61,10 +63,11 @@ class AdvertisementController extends Controller
         }
 
         $response = [
-            'data' => $this->adCampaignService->show($advertisement)
+            'success' => true,
+            'data' => $this->adCampaignService->show($advertisement),
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response, 201);
     }
 
     /**
@@ -84,7 +87,8 @@ class AdvertisementController extends Controller
         }
 
         $response = [
-            'data' => $this->adCampaignService->show($updatedAdvertisement)
+            'success' => true,
+            'data' => $this->adCampaignService->show($updatedAdvertisement),
         ];
 
         return response()->json($response, 200);
