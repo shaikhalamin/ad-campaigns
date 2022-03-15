@@ -18,7 +18,6 @@ class AdvertisementTest extends TestCase
      */
     public function test_get_list_of_advertisement_campaigns()
     {
-
         $advertisement = Advertisement::factory(5)->create();
 
         $response = $this->get('/api/advertisements');
@@ -28,8 +27,8 @@ class AdvertisementTest extends TestCase
         $response->assertJson([
             'success' => true,
             'data' => [
-                "current_page" => 1,
-                "total" => 5
+                'current_page' => 1,
+                'total' => 5,
             ],
         ]);
     }
@@ -73,7 +72,6 @@ class AdvertisementTest extends TestCase
      */
     public function test_fetch_single_advertisement_campaign()
     {
-
         $advertisement = Advertisement::factory()->create([
             'name' => 'Single Test Advertisement',
             'from' => '2020-01-01',
@@ -101,7 +99,6 @@ class AdvertisementTest extends TestCase
      */
     public function test_update_advertisement_campaign()
     {
-
         $advertisement = Advertisement::factory()->create([
             'name' => 'Single Test Advertisement',
             'from' => '2020-01-01',
@@ -118,8 +115,8 @@ class AdvertisementTest extends TestCase
             'to' => '2022-01-01',
             'daily_budget' => '100',
             'total_budget' => '200',
-            "images[]" => $file,
-            "_method" => "PUT",
+            'images[]' => $file,
+            '_method' => 'PUT',
 
         ], ['Content-Type' => 'multipart/form-data']);
 
@@ -127,14 +124,14 @@ class AdvertisementTest extends TestCase
             ->assertStatus(200)
             ->assertJson([
                 'success' => true,
-                "data" => [
-                    "id" => 1,
-                    "name" => "Updated Test Advertisement",
-                    "from" => "2020-01-01",
-                    "to" => "2022-01-01",
-                    "total_budget" => "200",
-                    "daily_budget" => "100"
-                ]
+                'data' => [
+                    'id' => 1,
+                    'name' => 'Updated Test Advertisement',
+                    'from' => '2020-01-01',
+                    'to' => '2022-01-01',
+                    'total_budget' => '200',
+                    'daily_budget' => '100',
+                ],
             ]);
 
         $this->assertDatabaseHas('advertisements', [

@@ -17,6 +17,8 @@ Step 3: sudo chmod +x run.sh
 
 Step 4: ./run.sh
 
+#please be patient it will take some time to setup docker env and project 
+
 Step 5: docker exec -it backend-container php artisan migrate:fresh
 
 ```
